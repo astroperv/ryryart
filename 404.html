@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RyRyArt</title>
+<style>body{background:#0a0a0a;margin:0}</style>
+<script>
+var path=window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
+var valid=['gallery','shop','merch','about','videos','connect'];
+if(path && valid.indexOf(path)!==-1){window.location.replace('/?p='+path);}else{window.location.replace('/');}
+</script>
+</head>
+<body></body>
+</html>
