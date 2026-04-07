@@ -2249,21 +2249,56 @@ document.addEventListener('keydown', function(e) {
 // On load, navigate to page from URL path
 (function() {
   var path = '';
+  var paintingSlug = '';
   try {
     var srch = top.location.search;
     var pIdx = srch.indexOf('p=');
     if (pIdx !== -1) {
       path = srch.substring(pIdx + 2).split('&')[0];
-      top.history.replaceState({page: path}, '', '/' + path);
+      /* Check for painting param */
+      var paintIdx = srch.indexOf('painting=');
+      if (paintIdx !== -1) paintingSlug = srch.substring(paintIdx + 9).split('&')[0];
+      top.history.replaceState({page: path}, '', '/' + path + (paintingSlug ? '/' + paintingSlug : ''));
     } else {
-      path = top.location.pathname.replace(/^\//, '').replace(/\/$/, '') || '';
+      var fullPath = top.location.pathname.replace(/^\//, '').replace(/\/$/, '') || '';
+      /* Handle /gallery/slug deep links */
+      if (fullPath.indexOf('gallery/') === 0) {
+        path = 'gallery';
+        paintingSlug = fullPath.substring(8);
+      } else {
+        path = fullPath;
+      }
     }
   } catch(e) {
-    path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '') || '';
+    var fullPath = window.location.pathname.replace(/^\//, '').replace(/\/$/, '') || '';
+    if (fullPath.indexOf('gallery/') === 0) {
+      path = 'gallery';
+      paintingSlug = fullPath.substring(8);
+    } else {
+      path = fullPath;
+    }
   }
   var validPages = ['gallery','shop','merch','about','videos','connect'];
   if (path && validPages.indexOf(path) !== -1) {
     showPage(path);
+  }
+  /* Deep-link to specific painting */
+  if (paintingSlug && path === 'gallery') {
+    window.__pendingPaintingSlug = paintingSlug;
+    setTimeout(function() {
+      var thumbs = document.querySelectorAll('.film-thumb');
+      for (var i = 0; i < thumbs.length; i++) {
+        var t = thumbs[i];
+        var tTitle = (t.dataset.title || t.alt || '').toLowerCase().replace(/[()]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/-+$/,'').replace(/^-+/,'');
+        if (tTitle === paintingSlug) {
+          var gallery = document.getElementById('gallery');
+          if (gallery) gallery.classList.remove('grid-view');
+          selectFilmThumb(t);
+          window.scrollTo(0, 0);
+          break;
+        }
+      }
+    }, 300);
   }
 })();
 
@@ -2274,6 +2309,9 @@ function selectFilmThumb(el) {
   document.getElementById('galleryFeaturedMedium').textContent = el.dataset.medium || '';
   document.querySelectorAll('.film-thumb').forEach(function(t) { t.classList.remove('film-active'); });
   el.classList.add('film-active');
+  /* Update URL to per-painting deep link */
+  var paintSlug = (el.dataset.title || el.alt || '').toLowerCase().replace(/[()]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/-+$/,'').replace(/^-+/,'');
+  if (paintSlug) { try { top.history.replaceState({page:'gallery',painting:paintSlug}, '', '/gallery/' + paintSlug); } catch(e){} }
   // Show price + buy if for sale
   var priceEl = document.getElementById('galleryPrice');
   var buyEl = document.getElementById('galleryBuyBtn');
@@ -2389,7 +2427,8 @@ document.addEventListener('DOMContentLoaded', initFilmstrip);
 function shareGalleryImage() {
   var titleEl = document.getElementById('galleryFeaturedTitle');
   var title = titleEl ? titleEl.textContent : 'RyRyArt';
-  var url = 'https://ryryart.com/gallery';
+  var slug = title.toLowerCase().replace(/[()]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/-+$/,'').replace(/^-+/,'');
+  var url = 'https://ryryart.com/gallery/' + slug;
   var shareText = '"' + title + '" by Ryan Wright @ryry_art | ryryart.com #art #originalart #painting';
 
   /* Mobile: try native Web Share API first — the industry standard */
@@ -2508,20 +2547,38 @@ function showGalleryGrid() {
     var item = document.createElement('div');
     item.className = 'gallery-grid-item';
     var img = document.createElement('img');
-    img.src = thumb.src;
+    img.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1 1%22%3E%3C/svg%3E';
+    img.dataset.lazySrc = thumb.src;
     img.alt = thumb.alt;
-    img.loading = 'lazy';
+    img.style.background = '#1a1a1a';
     var overlay = document.createElement('div');
     overlay.className = 'gallery-grid-overlay';
     var h3 = document.createElement('h3');
     h3.textContent = thumb.dataset.title || thumb.alt || '';
     overlay.appendChild(h3);
-    item.appendChild(img);
-    item.appendChild(overlay);
+    item.appendChild(img); item.appendChild(overlay);
     (function(t) { item.onclick = function() { openGalleryFromGrid(t); }; })(thumb);
     grid.appendChild(item);
   });
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var img = entry.target;
+          if (img.dataset.lazySrc) {
+            img.src = img.dataset.lazySrc;
+            delete img.dataset.lazySrc;
+            observer.unobserve(img);
+          }
+        }
+      });
+    }, { rootMargin: '200px' });
+    grid.querySelectorAll('img[data-lazy-src]').forEach(function(img) { observer.observe(img); });
+  } else {
+    grid.querySelectorAll('img[data-lazy-src]').forEach(function(img) { img.src = img.dataset.lazySrc; });
+  }
   gallery.classList.add('grid-view');
+  try { top.history.replaceState({page:'gallery'}, '', '/gallery'); } catch(e){}
   window.scrollTo(0, 0);
 }
 
