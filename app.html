@@ -1357,7 +1357,7 @@ section#gallery.grid-view.spa-active { overflow-y: auto !important; height: auto
 .share-panel-header span { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 2px; }
 .share-close-btn { background: none; border: none; color: rgba(255,255,255,0.6); font-size: 22px; cursor: pointer; padding: 0; line-height: 1; }
 .share-close-btn:hover { color: #fff; }
-.share-platforms { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; }
+.share-platforms { display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; } @media (max-width: 768px) { .share-platforms { grid-template-columns: repeat(4,1fr); gap: 8px; } }
 .share-platform { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 14px 6px 12px; background: rgba(255,255,255,0.07); border-radius: 12px; border: none; cursor: pointer; text-decoration: none; color: rgba(255,255,255,0.85); font-family: var(--font-body); font-size: 10px; letter-spacing: 0.5px; transition: background 0.2s; text-align: center; }
 .share-platform:hover { background: rgba(255,255,255,0.14); color: #fff; }
 .share-platform svg { width: 22px; height: 22px; }
@@ -2389,7 +2389,16 @@ document.addEventListener('DOMContentLoaded', initFilmstrip);
 function shareGalleryImage() {
   var titleEl = document.getElementById('galleryFeaturedTitle');
   var title = titleEl ? titleEl.textContent : 'RyRyArt';
-  var url = 'https://ryryart.com/';
+  var url = 'https://ryryart.com/gallery';
+  var shareText = '"' + title + '" by Ryan Wright @ryry_art | ryryart.com #art #originalart #painting';
+
+  /* Mobile: try native Web Share API first — the industry standard */
+  if (navigator.share && window.innerWidth <= 768) {
+    navigator.share({ title: title + ' — RyRyArt', text: shareText, url: url }).catch(function(){});
+    return;
+  }
+
+  /* Desktop / fallback: show share panel */
   var panel = document.getElementById('sharePanel');
   if (!panel) {
     panel = document.createElement('div');
@@ -2419,7 +2428,9 @@ function shareGalleryImage() {
   var plats = panel.__plats;
   plats.innerHTML = '';
   var urlEnc = encodeURIComponent(url);
-  var textEnc = encodeURIComponent('Check out "' + title + '" by Ryan Wright — ryryart.com');
+  var textEnc = encodeURIComponent(shareText);
+  var titleEnc = encodeURIComponent(title + ' — RyRyArt');
+
   function mkBtn(label, svgPath, href, fn) {
     var el = href ? document.createElement('a') : document.createElement('button');
     el.className = 'share-platform';
@@ -2428,28 +2439,54 @@ function shareGalleryImage() {
     el.innerHTML = svgPath + '<span>' + label + '</span>';
     return el;
   }
-  var igSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff"/></svg>';
-  var ttSvg = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.07a8.16 8.16 0 004.77 1.52V7.14a4.85 4.85 0 01-1-.45z"/></svg>';
-  var fbSvg = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>';
-  var xSvg = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M4 4l16 16M20 4L4 20" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>';
+
+  /* SVG icons — minimal inline, consistent 24x24 viewBox */
+  var igSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#fff" stroke="none"/></svg>';
+  var ttSvg = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M19.3 6.5a4.2 4.2 0 01-3-1.3A4.2 4.2 0 0115 2h-3.2v13.4a2.6 2.6 0 01-2.6 2.4 2.6 2.6 0 01-2.6-2.6c0-1.4 1.2-2.6 2.6-2.6.3 0 .5 0 .8.1V9.4a6 6 0 00-.8-.1 5.8 5.8 0 00-5.8 5.9 5.8 5.8 0 005.8 5.8 5.8 5.8 0 005.8-5.8V9.3a7.4 7.4 0 004.3 1.4V7.5a4.2 4.2 0 01-1-.1z"/></svg>';
+  var fbSvg = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M22 12a10 10 0 10-11.6 9.9v-7h-2.5v-3h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 3h-2.4v7A10 10 0 0022 12z"/></svg>';
+  var xSvg = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M18.9 1.2h3.7L14.6 10l9.4 12.8h-7.3l-5.7-7.5-6.5 7.5H1l8.5-9.7L.7 1.2H8l5.2 6.8 6-6.8zm-1.3 20.5h2L6.6 3.2H4.5l13.1 18.5z" transform="scale(0.85) translate(2,2)"/></svg>';
+  var pinSvg = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.2 2.6 7.8 6.3 9.3-.1-.8-.2-2 0-2.9.2-.8 1.3-5.4 1.3-5.4s-.3-.7-.3-1.6c0-1.5.9-2.7 2-2.7.9 0 1.4.7 1.4 1.6 0 1-.6 2.4-1 3.7-.3 1.2.6 2.1 1.7 2.1 2.1 0 3.7-2.2 3.7-5.4 0-2.8-2-4.8-4.9-4.8-3.4 0-5.3 2.5-5.3 5.1 0 1 .4 2.1.9 2.7.1.1.1.2.1.3l-.3 1.3c-.1.3-.2.3-.4.2-1.5-.7-2.4-2.9-2.4-4.7 0-3.8 2.8-7.3 8-7.3 4.2 0 7.4 3 7.4 7 0 4.1-2.6 7.5-6.3 7.5-1.2 0-2.4-.6-2.8-1.4l-.8 2.9c-.3 1.1-1 2.5-1.5 3.3 1.1.4 2.3.5 3.5.5 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>';
+  var waSvg = '<svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4l-2-1c-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.3.3-.6.1-.3-.2-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.4-.4c.1-.2.2-.3.1-.5l-1-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.6-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.6 1 1-3.5-.2-.4a9.8 9.8 0 1115.3-8.1c0 5.4-4.4 9.8-9.8 9.8zM12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.2A10 10 0 1012 2z"/></svg>';
+  var smsSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>';
+  var mailSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>';
+  var dlSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
   var cpSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>';
+
+  function closePanel() { panel.classList.remove('active'); }
+  function copyAndToast() {
+    navigator.clipboard.writeText(url).then(function() { showToast('LINK COPIED'); });
+    closePanel();
+  }
+
+  /* Build buttons */
   var igBtn = mkBtn('Instagram', igSvg, null, function() {
-    if (navigator.share) { navigator.share({ title: 'RyRyArt', url: url }).catch(function(){}); }
-    else { navigator.clipboard.writeText(url).then(function() { showToast('LINK COPIED'); }); }
-    panel.classList.remove('active');
+    if (navigator.share) { navigator.share({ title: titleEnc, url: url }).catch(function(){}); }
+    else { copyAndToast(); }
+    closePanel();
   });
   var ttBtn = mkBtn('TikTok', ttSvg, null, function() {
-    if (navigator.share) { navigator.share({ title: 'RyRyArt', url: url }).catch(function(){}); }
-    else { navigator.clipboard.writeText(url).then(function() { showToast('LINK COPIED'); }); }
-    panel.classList.remove('active');
+    if (navigator.share) { navigator.share({ title: titleEnc, url: url }).catch(function(){}); }
+    else { copyAndToast(); }
+    closePanel();
   });
   var fbBtn = mkBtn('Facebook', fbSvg, 'https://www.facebook.com/sharer/sharer.php?u=' + urlEnc);
   var xBtn = mkBtn('X / Twitter', xSvg, 'https://twitter.com/intent/tweet?url=' + urlEnc + '&text=' + textEnc);
-  var cpBtn = mkBtn('Copy Link', cpSvg, null, function() {
-    navigator.clipboard.writeText(url).then(function() { showToast('LINK COPIED'); });
-    panel.classList.remove('active');
+  var pinBtn = mkBtn('Pinterest', pinSvg, 'https://pinterest.com/pin/create/button/?url=' + urlEnc + '&description=' + textEnc);
+  var waBtn = mkBtn('WhatsApp', waSvg, 'https://wa.me/?text=' + textEnc + '%20' + urlEnc);
+  var smsBtn = mkBtn('iMessage', smsSvg, 'sms:?&body=' + textEnc + '%20' + urlEnc);
+  var mailBtn = mkBtn('Email', mailSvg, 'mailto:?subject=' + titleEnc + '&body=' + textEnc + '%20' + urlEnc);
+  var dlBtn = mkBtn('Save Image', dlSvg, null, function() {
+    var img = document.getElementById('galleryFeaturedImg');
+    if (img && img.src) {
+      var a = document.createElement('a');
+      a.href = img.src; a.download = (title || 'ryryart') + '.jpg';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    }
+    closePanel();
   });
-  [igBtn, ttBtn, fbBtn, xBtn, cpBtn].forEach(function(b) { plats.appendChild(b); });
+  var cpBtn = mkBtn('Copy Link', cpSvg, null, function() { copyAndToast(); });
+
+  [igBtn, ttBtn, fbBtn, xBtn, pinBtn, waBtn, smsBtn, mailBtn, dlBtn, cpBtn].forEach(function(b) { plats.appendChild(b); });
   panel.classList.add('active');
 }
 
