@@ -1349,6 +1349,16 @@ section#gallery.grid-view.spa-active { overflow-y: auto !important; height: auto
 .gallery-grid-item:hover .gallery-grid-overlay { opacity: 1; }
 .gallery-grid-overlay h3 { color: #fff; font-size: 11px; font-family: var(--font-display); text-transform: uppercase; letter-spacing: 1px; margin: 0; font-weight: 700; }
 #gallery:not(.grid-view) .gallery-back-btn { display: flex; }
+/* ---- LOAD MORE ---- */
+.load-more-btn { display: block; margin: 20px auto 40px; padding: 14px 48px; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 0; font-family: var(--font-display); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; }
+.load-more-btn:hover { background: #fff; color: #000; }
+/* ---- MOBILE GRID ---- */
+@media (max-width: 768px) {
+  .gallery-grid-view { grid-template-columns: repeat(2,1fr) !important; gap: 2px !important; }
+  .gallery-grid-overlay { opacity: 1; padding: 6px 6px 5px; }
+  .gallery-grid-overlay h3 { font-size: 9px; letter-spacing: 0.5px; }
+  .load-more-btn { padding: 12px 36px; font-size: 11px; margin: 16px auto 32px; }
+}
 /* ---- SHARE PANEL ---- */
 .share-panel { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 10000; display: flex; align-items: flex-end; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
 .share-panel.active { opacity: 1; pointer-events: all; }
@@ -1585,6 +1595,7 @@ section#gallery.grid-view.spa-active { overflow-y: auto !important; height: auto
   background: rgba(204,41,54,0.1);
 }
 </style>
+<script defer data-domain="ryryart.com" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 
@@ -1705,153 +1716,7 @@ section#gallery.grid-view.spa-active { overflow-y: auto !important; height: auto
   </div>
   
             
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-i.jpg" alt="Untitled II" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled II</h3>
-          <p>Mixed media</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-ii.jpg" alt="Untitled III" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled III</h3>
-          <p>Mixed media</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-iii.jpg" alt="Untitled IV" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled IV</h3>
-          <p>Mixed media</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-iv.jpg" alt="Untitled V" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled V</h3>
-          <p>Mixed media</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-v.jpg" alt="Untitled VI" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled VI</h3>
-          <p>Mixed media</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-vi.jpg" alt="Untitled VII" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled VII</h3>
-          <p>Mixed media</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-vii.jpg" alt="Untitled VIII" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled VIII</h3>
-          <p>Mixed media</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-viii.jpg" alt="Untitled IX" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled IX</h3>
-          <p>Mixed media</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-ix.jpg" alt="Untitled X" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled X</h3>
-          <p>Mixed media</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-x.jpg" alt="Untitled XI" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled XI</h3>
-          <p>Mixed media</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-xi.png" alt="Untitled XII" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled XII</h3>
-          <p>Digital</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-xii.png" alt="Untitled XIII" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled XIII</h3>
-          <p>Digital</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-xiii.png" alt="Untitled XIV" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled XIV</h3>
-          <p>Digital</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-xiv.png" alt="Untitled XV" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled XV</h3>
-          <p>Digital</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/untitled-xv.jpg" alt="Untitled XVI" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled XVI</h3>
-          <p>Mixed media</p>
-        </div>
-      </div>
-<div class="gallery-item" data-category="original">
-        <img src="images/untitled-xvi.jpg" alt="My King" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>My King</h3>
-          <p>Mixed media on canvas</p>
-        </div>
-      </div>
-      <div class="gallery-item" data-category="original">
-        <img src="images/my-king.jpg" alt="Untitled (Circular)" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled (Circular)</h3>
-          <p>Mixed media on wood</p>
-        </div>
-      </div>
-      <div class="gallery-item" data-category="original">
-        <img src="images/untitled-circular.jpg" alt="Untitled Figure" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled Figure</h3>
-          <p>Oil on canvas</p>
-        </div>
-      </div>
-      <div class="gallery-item" data-category="original">
-        <img src="images/untitled-figure.jpg" alt="The Crew" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>The Crew</h3>
-          <p>Mixed media on canvas</p>
-        </div>
-      </div>
-      <div class="gallery-item reveal" data-category="original" onclick="openLightbox(this)">
-        <img src="images/the-crew.jpg" alt="Untitled (Crown)" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Untitled (Crown)</h3>
-          <p>Mixed media on canvas</p>
-        </div>
-      </div>
-      <div class="gallery-item" data-category="original" data-price="500" data-for-sale="true">
-        <img src="images/untitled-crown.jpg" alt="Blue Cat" loading="lazy">
-        <div class="gallery-overlay">
-          <h3>Blue Cat</h3>
-          <p>Acrylic &amp; Oil Pastel on Wood Panel</p>
-        </div>
-      </div>
+      <div id="galleryItems"></div>
     </div>
 </section>
 
@@ -2088,6 +1953,33 @@ section#gallery.grid-view.spa-active { overflow-y: auto !important; height: auto
 </div>
 
 <script>
+// ---- PAINTINGS DATA ----
+var __paintings = [
+  {title:"Untitled II",img:"images/untitled-i.jpg",medium:"Mixed media",price:"",forSale:false},
+  {title:"Untitled III",img:"images/untitled-ii.jpg",medium:"Mixed media",price:"",forSale:false},
+  {title:"Untitled IV",img:"images/untitled-iii.jpg",medium:"Mixed media",price:"",forSale:false},
+  {title:"Untitled V",img:"images/untitled-iv.jpg",medium:"Mixed media",price:"",forSale:false},
+  {title:"Untitled VI",img:"images/untitled-v.jpg",medium:"Mixed media",price:"",forSale:false},
+  {title:"Untitled VII",img:"images/untitled-vi.jpg",medium:"Mixed media",price:"",forSale:false},
+  {title:"Untitled VIII",img:"images/untitled-vii.jpg",medium:"Mixed media",price:"",forSale:false},
+  {title:"Untitled IX",img:"images/untitled-viii.jpg",medium:"Mixed media",price:"",forSale:false},
+  {title:"Untitled X",img:"images/untitled-ix.jpg",medium:"Mixed media",price:"",forSale:false},
+  {title:"Untitled XI",img:"images/untitled-x.jpg",medium:"Mixed media",price:"",forSale:false},
+  {title:"Untitled XII",img:"images/untitled-xi.png",medium:"Digital",price:"",forSale:false},
+  {title:"Untitled XIII",img:"images/untitled-xii.png",medium:"Digital",price:"",forSale:false},
+  {title:"Untitled XIV",img:"images/untitled-xiii.png",medium:"Digital",price:"",forSale:false},
+  {title:"Untitled XV",img:"images/untitled-xiv.png",medium:"Digital",price:"",forSale:false},
+  {title:"Untitled XVI",img:"images/untitled-xv.jpg",medium:"Mixed media",price:"",forSale:false},
+  {title:"My King",img:"images/untitled-xvi.jpg",medium:"Mixed media on canvas",price:"",forSale:false},
+  {title:"Untitled (Circular)",img:"images/my-king.jpg",medium:"Mixed media on wood",price:"",forSale:false},
+  {title:"Untitled Figure",img:"images/untitled-circular.jpg",medium:"Oil on canvas",price:"",forSale:false},
+  {title:"The Crew",img:"images/untitled-figure.jpg",medium:"Mixed media on canvas",price:"",forSale:false},
+  {title:"Untitled (Crown)",img:"images/the-crew.jpg",medium:"Mixed media on canvas",price:"",forSale:false},
+  {title:"Blue Cat",img:"images/untitled-crown.jpg",medium:"Acrylic \u0026 Oil Pastel on Wood Panel",price:"500",forSale:true}
+];
+var __paintingsPerPage = 12;
+var __paintingsLoaded = 0;
+
 // ---- NAV ----
 function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
@@ -2213,7 +2105,7 @@ function showPage(id) {
     var href = a.getAttribute('href');
     a.classList.toggle('active', href === '#' + id);
   });
-  if (id === 'gallery') { initFilmstrip(); if (window.innerWidth > 768) { showGalleryGrid(); } }
+  if (id === 'gallery') { initFilmstrip(); showGalleryGrid(); }
   if (id === 'shop') initShopPage();
   // Trigger scroll-reveal for elements in the newly shown section
   if (target) {
@@ -2350,41 +2242,33 @@ function initShopPage() {
 }
 
 function initFilmstrip() {
-  var items = document.querySelectorAll('#gallery .gallery-item');
   var filmstrip = document.getElementById('galleryFilmstrip');
   var featuredImg = document.getElementById('galleryFeaturedImg');
   var featuredTitle = document.getElementById('galleryFeaturedTitle');
   var featuredMedium = document.getElementById('galleryFeaturedMedium');
-  if (!items.length || !filmstrip) return;
+  if (!filmstrip || !__paintings.length) return;
   filmstrip.innerHTML = '';
-  items.forEach(function(item, i) {
-    var img = item.querySelector('img');
-    var h3 = item.querySelector('h3');
-    var p = item.querySelector('p');
-    if (!img) return;
+  __paintings.forEach(function(p, i) {
     var thumb = document.createElement('img');
     thumb.className = 'film-thumb' + (i === 0 ? ' film-active' : '');
-    thumb.src = img.src;
-    thumb.alt = img.alt;
-    thumb.dataset.title = h3 ? h3.textContent : '';
-    thumb.dataset.medium = p ? p.textContent : '';
-    thumb.dataset.price = item.dataset.price || '';
-    thumb.dataset.forSale = item.dataset.forSale || '';
+    thumb.src = p.img;
+    thumb.alt = p.title;
+    thumb.dataset.title = p.title;
+    thumb.dataset.medium = p.medium;
+    thumb.dataset.price = p.price || '';
+    thumb.dataset.forSale = p.forSale ? 'true' : '';
     thumb.onclick = function() { selectFilmThumb(this); };
     filmstrip.appendChild(thumb);
     if (i === 0) {
-      featuredImg.src = img.src;
-      if (featuredTitle) featuredTitle.textContent = h3 ? h3.textContent : '';
-      if (featuredMedium) featuredMedium.textContent = p ? p.textContent : '';
-      // Show price/buy for first item if for sale
+      featuredImg.src = p.img;
+      if (featuredTitle) featuredTitle.textContent = p.title;
+      if (featuredMedium) featuredMedium.textContent = p.medium;
       var priceEl = document.getElementById('galleryPrice');
       var buyEl = document.getElementById('galleryBuyBtn');
-      if (priceEl && buyEl) {
-        if (item.dataset.price) {
-          priceEl.textContent = '$' + item.dataset.price;
-          priceEl.style.display = 'inline';
-          buyEl.style.display = 'inline-block';
-        }
+      if (priceEl && buyEl && p.price) {
+        priceEl.textContent = '$' + p.price;
+        priceEl.style.display = 'inline';
+        buyEl.style.display = 'inline-block';
       }
     }
   });
@@ -2532,7 +2416,6 @@ function shareGalleryImage() {
 function showGalleryGrid() {
   var gallery = document.getElementById('gallery');
   if (!gallery) return;
-  if (window.innerWidth <= 768) { showPage('home'); return; }
   initFilmstrip();
   var grid = document.getElementById('galleryGridView');
   if (!grid) {
@@ -2542,24 +2425,39 @@ function showGalleryGrid() {
     gallery.appendChild(grid);
   }
   grid.innerHTML = '';
-  var thumbs = Array.from(document.querySelectorAll('.film-thumb'));
-  thumbs.forEach(function(thumb) {
+  __paintingsLoaded = 0;
+  loadMorePaintings();
+  gallery.classList.add('grid-view');
+  try { top.history.replaceState({page:'gallery'}, '', '/gallery'); } catch(e) {}
+}
+
+function loadMorePaintings() {
+  var grid = document.getElementById('galleryGridView');
+  if (!grid) return;
+  var end = Math.min(__paintingsLoaded + __paintingsPerPage, __paintings.length);
+  var thumbs = document.querySelectorAll('.film-thumb');
+  for (var idx = __paintingsLoaded; idx < end; idx++) {
+    var p = __paintings[idx];
     var item = document.createElement('div');
     item.className = 'gallery-grid-item';
     var img = document.createElement('img');
     img.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1 1%22%3E%3C/svg%3E';
-    img.dataset.lazySrc = thumb.src;
-    img.alt = thumb.alt;
+    img.dataset.lazySrc = p.img;
+    img.alt = p.title;
     img.style.background = '#1a1a1a';
     var overlay = document.createElement('div');
     overlay.className = 'gallery-grid-overlay';
     var h3 = document.createElement('h3');
-    h3.textContent = thumb.dataset.title || thumb.alt || '';
+    h3.textContent = p.title;
     overlay.appendChild(h3);
     item.appendChild(img); item.appendChild(overlay);
-    (function(t) { item.onclick = function() { openGalleryFromGrid(t); }; })(thumb);
+    if (thumbs[idx]) {
+      (function(t) { item.onclick = function() { openGalleryFromGrid(t); }; })(thumbs[idx]);
+    }
     grid.appendChild(item);
-  });
+  }
+  __paintingsLoaded = end;
+  // Lazy load observer
   if ('IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
@@ -2577,9 +2475,17 @@ function showGalleryGrid() {
   } else {
     grid.querySelectorAll('img[data-lazy-src]').forEach(function(img) { img.src = img.dataset.lazySrc; });
   }
-  gallery.classList.add('grid-view');
-  try { top.history.replaceState({page:'gallery'}, '', '/gallery'); } catch(e){}
-  window.scrollTo(0, 0);
+  // Add or remove Load More button
+  var existingBtn = document.getElementById('loadMoreBtn');
+  if (existingBtn) existingBtn.remove();
+  if (__paintingsLoaded < __paintings.length) {
+    var btn = document.createElement('button');
+    btn.id = 'loadMoreBtn';
+    btn.className = 'load-more-btn';
+    btn.textContent = 'Load More';
+    btn.onclick = function() { loadMorePaintings(); };
+    grid.parentNode.insertBefore(btn, grid.nextSibling);
+  }
 }
 
 function openGalleryFromGrid(thumb) {
