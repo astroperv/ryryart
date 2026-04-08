@@ -86,7 +86,7 @@ nav {
 
 @media (max-width: 768px) {
   body { padding-left: 64px; }
-  nav { width: 64px; }
+  nav { width: 64px; background: rgba(10,10,10,0.55); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-right: 1px solid rgba(255,255,255,0.08); }
   .nav-links a { width: 64px; height: 60px; }
   .nav-links a svg { width: 24px !important; height: 24px !important; }
   .nav-links a[data-tip]::before { left: 68px; }
@@ -2290,6 +2290,34 @@ document.addEventListener('DOMContentLoaded', initFilmstrip);
     // Scroll filmstrip to keep active thumb visible
     thumbs[nextIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
+
+  // ---- SWIPE GESTURES ----
+  (function() {
+    var startX = 0, startY = 0, tracking = false;
+    var wrap = null;
+    function getWrap() {
+      if (!wrap) wrap = document.querySelector('.gallery-featured-wrap');
+      return wrap;
+    }
+    document.addEventListener('touchstart', function(e) {
+      var w = getWrap();
+      if (!w || !w.offsetParent) return;
+      if (!w.contains(e.target)) return;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      tracking = true;
+    }, { passive: true });
+    document.addEventListener('touchend', function(e) {
+      if (!tracking) return;
+      tracking = false;
+      var dx = e.changedTouches[0].clientX - startX;
+      var dy = e.changedTouches[0].clientY - startY;
+      if (Math.abs(dx) < 50 || Math.abs(dy) > Math.abs(dx)) return;
+      if (dx < 0) navFilmstrip(1);
+      else navFilmstrip(-1);
+    }, { passive: true });
+  })();
+
   var wrap = null;
   document.addEventListener('DOMContentLoaded', function() {
     wrap = document.querySelector('.gallery-featured-wrap');
