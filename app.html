@@ -86,7 +86,7 @@ nav {
 
 @media (max-width: 768px) {
   body { padding-left: 64px; }
-  nav { width: 64px; background: rgba(10,10,10,0.25); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-right: 1px solid rgba(255,255,255,0.12); }
+  nav { width: 64px; background: rgba(0,0,0,0.15) !important; backdrop-filter: saturate(180%) blur(16px); -webkit-backdrop-filter: saturate(180%) blur(16px); border-right: 1px solid rgba(255,255,255,0.1); }
   section#gallery.spa-active { background: transparent !important; }
   .nav-links a { width: 64px; height: 60px; }
   .nav-links a svg { width: 24px !important; height: 24px !important; }
@@ -1355,7 +1355,7 @@ section#gallery.grid-view.spa-active { overflow-y: auto !important; height: auto
 .load-more-btn:hover { background: #fff; color: #000; }
 /* ---- MOBILE GRID ---- */
 @media (max-width: 768px) {
-  .gallery-grid-view { grid-template-columns: repeat(2,1fr) !important; gap: 2px !important; }
+  .gallery-grid-view { grid-template-columns: repeat(2,1fr) !important; gap: 2px !important; margin-left: -64px !important; padding-left: 0 !important; width: calc(100% + 64px) !important; }
   .gallery-grid-overlay { opacity: 1; padding: 6px 6px 5px; }
   .gallery-grid-overlay h3 { font-size: 9px; letter-spacing: 0.5px; }
   .load-more-btn { padding: 12px 36px; font-size: 11px; margin: 16px auto 32px; }
