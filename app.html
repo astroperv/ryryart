@@ -87,6 +87,7 @@ nav {
 @media (max-width: 768px) {
   body { padding-left: 64px; }
   nav { width: 64px; background: rgba(10,10,10,0.55); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-right: 1px solid rgba(255,255,255,0.08); }
+  section#gallery.spa-active { background: transparent; }
   .nav-links a { width: 64px; height: 60px; }
   .nav-links a svg { width: 24px !important; height: 24px !important; }
   .nav-links a[data-tip]::before { left: 68px; }
@@ -1349,10 +1350,6 @@ section#gallery.grid-view.spa-active { overflow-y: auto !important; height: auto
 .gallery-grid-item:hover .gallery-grid-overlay { opacity: 1; }
 .gallery-grid-overlay h3 { color: #fff; font-size: 11px; font-family: var(--font-display); text-transform: uppercase; letter-spacing: 1px; margin: 0; font-weight: 700; }
 #gallery:not(.grid-view) .gallery-back-btn { display: flex; }
-/* ---- MOBILE GLASS NAV FIX ---- */
-@media (max-width: 768px) {
-  section#gallery.grid-view.spa-active { margin-left: -64px; padding-left: 64px; width: calc(100% + 64px); }
-}
 /* ---- LOAD MORE ---- */
 .load-more-btn { display: block; margin: 20px auto 40px; padding: 14px 48px; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 0; font-family: var(--font-display); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; }
 .load-more-btn:hover { background: #fff; color: #000; }
@@ -1975,7 +1972,7 @@ var __paintings = [
   {title:"Untitled (Crown)",img:"images/the-crew.jpg",medium:"Mixed media on canvas",price:"",forSale:false},
   {title:"Blue Cat",img:"images/untitled-crown.jpg",medium:"Acrylic \u0026 Oil Pastel on Wood Panel",price:"500",forSale:true}
 ];
-var __paintingsPerPage = 12;
+var __paintingsPerPage = 100;
 var __paintingsLoaded = 0;
 
 // ---- NAV ----
@@ -2343,7 +2340,22 @@ function shareGalleryImage() {
 
   /* Mobile: try native Web Share API first — the industry standard */
   if (navigator.share && window.innerWidth <= 768) {
-    navigator.share({ title: title + ' — RyRyArt', text: shareText, url: url }).catch(function(){});
+    var imgEl = document.getElementById('galleryFeaturedImg');
+    if (imgEl && imgEl.src) {
+      fetch(imgEl.src).then(function(r) { return r.blob(); }).then(function(blob) {
+        var ext = blob.type.indexOf('png') !== -1 ? '.png' : '.jpg';
+        var file = new File([blob], slug + ext, { type: blob.type });
+        var shareData = { title: title + ' — RyRyArt', text: shareText, url: url };
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          shareData.files = [file];
+        }
+        navigator.share(shareData).catch(function(){});
+      }).catch(function() {
+        navigator.share({ title: title + ' — RyRyArt', text: shareText, url: url }).catch(function(){});
+      });
+    } else {
+      navigator.share({ title: title + ' — RyRyArt', text: shareText, url: url }).catch(function(){});
+    }
     return;
   }
 
