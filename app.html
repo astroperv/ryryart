@@ -2346,11 +2346,11 @@ function shareGalleryImage() {
       fetch(imgEl.src).then(function(r) { return r.blob(); }).then(function(blob) {
         var ext = blob.type.indexOf('png') !== -1 ? '.png' : '.jpg';
         var file = new File([blob], slug + ext, { type: blob.type });
-        var shareData = { title: title + ' — RyRyArt', text: shareText, url: url };
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
-          shareData.files = [file];
+          navigator.share({ files: [file], title: title + ' — RyRyArt' }).catch(function(){});
+        } else {
+          navigator.share({ title: title + ' — RyRyArt', text: shareText, url: url }).catch(function(){});
         }
-        navigator.share(shareData).catch(function(){});
       }).catch(function() {
         navigator.share({ title: title + ' — RyRyArt', text: shareText, url: url }).catch(function(){});
       });
