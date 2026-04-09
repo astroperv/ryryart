@@ -2088,11 +2088,12 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 // ===== SPA PAGE SYSTEM =====
 function showPage(id) {
   document.body.classList.remove('gallery-grid-active');
-  document.body.style.paddingLeft = '';
+  document.body.style.removeProperty('padding-left');
+  document.body.style.removeProperty('overflow-y');
   var __nav = document.querySelector('nav');
-  if (__nav) { __nav.style.background = ''; __nav.style.webkitBackdropFilter = ''; __nav.style.backdropFilter = ''; }
+  if (__nav) { __nav.style.removeProperty('background'); __nav.style.removeProperty('-webkit-backdrop-filter'); __nav.style.removeProperty('backdrop-filter'); }
   var __gal = document.getElementById('gallery');
-  if (__gal) { __gal.style.left = ''; __gal.style.right = ''; __gal.style.width = ''; __gal.style.background = ''; __gal.style.padding = ''; __gal.style.margin = ''; }
+  if (__gal) { __gal.style.removeProperty('position'); __gal.style.removeProperty('top'); __gal.style.removeProperty('bottom'); __gal.style.removeProperty('left'); __gal.style.removeProperty('right'); __gal.style.removeProperty('width'); __gal.style.removeProperty('background'); __gal.style.removeProperty('padding'); __gal.style.removeProperty('margin'); __gal.style.removeProperty('min-height'); __gal.style.removeProperty('overflow'); }
   // contact is now merged into connect
   if (id === 'contact') id = 'connect';
   document.querySelectorAll('.page-section').forEach(function(s) {
@@ -2480,18 +2481,24 @@ function showGalleryGrid() {
   gallery.classList.add('grid-view');
   document.body.classList.add('gallery-grid-active');
   if (window.innerWidth <= 768) {
-    gallery.style.left = '0';
-    gallery.style.right = '0';
-    gallery.style.width = '100vw';
-    gallery.style.background = 'transparent';
-    gallery.style.padding = '0';
-    gallery.style.margin = '0';
-    document.body.style.paddingLeft = '0';
+    gallery.style.setProperty('position','relative','important');
+    gallery.style.setProperty('top','0','important');
+    gallery.style.setProperty('bottom','auto','important');
+    gallery.style.setProperty('left','0','important');
+    gallery.style.setProperty('right','0','important');
+    gallery.style.setProperty('width','100vw','important');
+    gallery.style.setProperty('background','transparent','important');
+    gallery.style.setProperty('padding','0','important');
+    gallery.style.setProperty('margin','0','important');
+    gallery.style.setProperty('min-height','100vh','important');
+    gallery.style.setProperty('overflow','visible','important');
+    document.body.style.setProperty('padding-left','0','important');
+    document.body.style.setProperty('overflow-y','auto','important');
     var nav = document.querySelector('nav');
     if (nav) {
-      nav.style.background = 'rgba(0,0,0,0.35)';
-      nav.style.webkitBackdropFilter = 'saturate(180%) blur(16px)';
-      nav.style.backdropFilter = 'saturate(180%) blur(16px)';
+      nav.style.setProperty('background','rgba(0,0,0,0.35)','important');
+      nav.style.setProperty('-webkit-backdrop-filter','saturate(180%) blur(16px)','important');
+      nav.style.setProperty('backdrop-filter','saturate(180%) blur(16px)','important');
     }
   }
   try { top.history.replaceState({page:'gallery'}, '', '/gallery'); } catch(e) {}
@@ -2565,15 +2572,21 @@ function openGalleryFromGrid(thumb) {
   var gallery = document.getElementById('gallery');
   if (gallery) {
     gallery.classList.remove('grid-view');
-    gallery.style.left = '';
-    gallery.style.right = '';
-    gallery.style.width = '';
-    gallery.style.background = '';
-    gallery.style.padding = '';
-    gallery.style.margin = '';
+    gallery.style.removeProperty('position');
+    gallery.style.removeProperty('top');
+    gallery.style.removeProperty('bottom');
+    gallery.style.removeProperty('left');
+    gallery.style.removeProperty('right');
+    gallery.style.removeProperty('width');
+    gallery.style.removeProperty('background');
+    gallery.style.removeProperty('padding');
+    gallery.style.removeProperty('margin');
+    gallery.style.removeProperty('min-height');
+    gallery.style.removeProperty('overflow');
   }
   document.body.classList.remove('gallery-grid-active');
-  document.body.style.paddingLeft = '';
+  document.body.style.removeProperty('padding-left');
+  document.body.style.removeProperty('overflow-y');
   var nav = document.querySelector('nav');
   if (nav) {
     nav.style.background = '';
