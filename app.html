@@ -2088,6 +2088,11 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 // ===== SPA PAGE SYSTEM =====
 function showPage(id) {
   document.body.classList.remove('gallery-grid-active');
+  document.body.style.paddingLeft = '';
+  var __nav = document.querySelector('nav');
+  if (__nav) { __nav.style.background = ''; __nav.style.webkitBackdropFilter = ''; __nav.style.backdropFilter = ''; }
+  var __gal = document.getElementById('gallery');
+  if (__gal) { __gal.style.left = ''; __gal.style.right = ''; __gal.style.width = ''; __gal.style.background = ''; __gal.style.padding = ''; __gal.style.margin = ''; }
   // contact is now merged into connect
   if (id === 'contact') id = 'connect';
   document.querySelectorAll('.page-section').forEach(function(s) {
@@ -2474,6 +2479,21 @@ function showGalleryGrid() {
   loadMorePaintings();
   gallery.classList.add('grid-view');
   document.body.classList.add('gallery-grid-active');
+  if (window.innerWidth <= 768) {
+    gallery.style.left = '0';
+    gallery.style.right = '0';
+    gallery.style.width = '100vw';
+    gallery.style.background = 'transparent';
+    gallery.style.padding = '0';
+    gallery.style.margin = '0';
+    document.body.style.paddingLeft = '0';
+    var nav = document.querySelector('nav');
+    if (nav) {
+      nav.style.background = 'rgba(0,0,0,0.35)';
+      nav.style.webkitBackdropFilter = 'saturate(180%) blur(16px)';
+      nav.style.backdropFilter = 'saturate(180%) blur(16px)';
+    }
+  }
   try { top.history.replaceState({page:'gallery'}, '', '/gallery'); } catch(e) {}
 }
 
@@ -2543,8 +2563,23 @@ function loadMorePaintings() {
 
 function openGalleryFromGrid(thumb) {
   var gallery = document.getElementById('gallery');
-  if (gallery) gallery.classList.remove('grid-view');
+  if (gallery) {
+    gallery.classList.remove('grid-view');
+    gallery.style.left = '';
+    gallery.style.right = '';
+    gallery.style.width = '';
+    gallery.style.background = '';
+    gallery.style.padding = '';
+    gallery.style.margin = '';
+  }
   document.body.classList.remove('gallery-grid-active');
+  document.body.style.paddingLeft = '';
+  var nav = document.querySelector('nav');
+  if (nav) {
+    nav.style.background = '';
+    nav.style.webkitBackdropFilter = '';
+    nav.style.backdropFilter = '';
+  }
   selectFilmThumb(thumb);
   window.scrollTo(0, 0);
 }
