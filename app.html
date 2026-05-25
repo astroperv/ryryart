@@ -1217,7 +1217,7 @@ section#gallery.spa-active {
 .shop-card-price { font-size: 1.3rem; font-weight: 700; color: #fff; display: block; margin-bottom: 0.8rem; }
 .shop-card-button { display: inline-block; background: #c62828; color: #fff; padding: 0.7rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: background 0.2s; }
 .shop-card-button:hover { background: #a01e1e; }
-@media (max-width: 600px) { .shop-grid { grid-template-columns: 1fr; max-width: 400px; } }
+@media (max-width: 600px) { .shop-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; max-width: 100%; padding: 0 0.75rem; } .shop-card-info { padding: 0.7rem 0.5rem; } .shop-card-title { font-size: 1rem; } .shop-card-medium { font-size: 0.72rem; margin-bottom: 0.5rem; } .shop-card-price { font-size: 1.1rem; margin-bottom: 0.6rem; } .shop-card-button { padding: 0.55rem 1rem; font-size: 0.8rem; } }
 
 /* Merch list */
 .merch-list {
@@ -1624,7 +1624,6 @@ section#gallery.grid-view.spa-active { overflow-y: auto !important; height: auto
 <!-- SHOP -->
       <section class="page-section" id="shop">
         <div class="shop-header">
-          <h2 class="section-title">Shop</h2>
           <p class="shop-subtitle">Original paintings -- one of a kind, ships from Atlanta, GA.</p>
         </div>
         <div id="shopItems" class="shop-grid"></div>
