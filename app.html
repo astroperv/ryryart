@@ -1602,7 +1602,7 @@ section#gallery.grid-view.spa-active { overflow-y: auto !important; height: auto
       <p id="galleryFeaturedMedium"></p>
       <div class="gallery-price-row" style="margin-top:8px;">
         <span id="galleryPrice" class="gallery-price" style="display:none;"></span>
-        <a id="galleryBuyBtn" href="https://shop.ryryart.com/products/cat-painting" target="_blank" class="gallery-buy-btn" style="display:none;">Inquire to Buy</a>
+        <a id="galleryBuyBtn" href="https://shop.ryryart.com/products/cat-painting" target="_blank" class="gallery-buy-btn" style="display:none;">VIEW &amp; BUY</a>
       </div>
     </div>
     <div class="gallery-actions">
@@ -2139,9 +2139,10 @@ function selectFilmThumb(el) {
   var buyEl = document.getElementById('galleryBuyBtn');
   if (priceEl && buyEl) {
     if (el.dataset.price) {
-      priceEl.textContent = '$' + el.dataset.price;
+      priceEl.textContent = (el.dataset.price.indexOf('$') === 0) ? el.dataset.price : '$' + el.dataset.price;
       priceEl.style.display = 'inline';
       buyEl.style.display = 'inline-block';
+      if (el.dataset.shopUrl) buyEl.href = el.dataset.shopUrl;
     } else {
       priceEl.style.display = 'none';
       buyEl.style.display = 'none';
@@ -2188,6 +2189,7 @@ function initFilmstrip() {
     thumb.dataset.medium = p.medium;
     thumb.dataset.price = p.price || '';
     thumb.dataset.forSale = p.forSale ? 'true' : '';
+    thumb.dataset.shopUrl = p.shopUrl || '';
     thumb.onclick = function() { selectFilmThumb(this); };
     filmstrip.appendChild(thumb);
     if (i === 0) {
@@ -2197,9 +2199,10 @@ function initFilmstrip() {
       var priceEl = document.getElementById('galleryPrice');
       var buyEl = document.getElementById('galleryBuyBtn');
       if (priceEl && buyEl && p.price) {
-        priceEl.textContent = '$' + p.price;
+        priceEl.textContent = (typeof p.price === 'string' && p.price.indexOf('$') === 0) ? p.price : '$' + p.price;
         priceEl.style.display = 'inline';
         buyEl.style.display = 'inline-block';
+        if (p.shopUrl) buyEl.href = p.shopUrl;
       }
     }
   });
