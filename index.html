@@ -25,6 +25,7 @@ iframe { position: fixed; top: 0; left: 0; }
 </style>
 </head>
 <body>
-<iframe src="/app.html" scrolling="yes"></iframe>
+<iframe id="appframe" scrolling="yes"></iframe>
+<script>document.getElementById("appframe").src="/app.html?v="+Date.now()+window.location.search.replace("?","&");</script>
 </body>
 </html>
