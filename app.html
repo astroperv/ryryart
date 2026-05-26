@@ -1217,8 +1217,6 @@ section#gallery.spa-active {
 .shop-card-price { font-size: 1.3rem; font-weight: 700; color: #fff; display: block; margin-bottom: 0.8rem; }
 .shop-card-button { display: inline-block; background: #000; color: #fff; padding: 0.6rem 2rem; border: 2px solid rgba(255,255,255,0.7); border-radius: 0; text-decoration: none; font-weight: 600; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; transition: all 0.2s; }
 .shop-card-button:hover { background: rgba(255,255,255,0.08); border-color: #fff; }
-.shop-card-button-print { background: #000 !important; border: 2px solid rgba(255,255,255,0.5) !important; color: #fff !important; margin-top: 0.4rem; padding: 0.5rem 1.6rem !important; font-size: 0.8rem !important; letter-spacing: 1.5px; }
-.shop-card-button-print:hover { background: rgba(255,255,255,0.08) !important; border-color: #fff !important; color: #fff !important; }
 @media (max-width: 600px) { .shop-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; max-width: 100%; padding: 0 0.75rem; } .shop-card-info { padding: 0.7rem 0.5rem; } .shop-card-title { font-size: 1rem; } .shop-card-medium { font-size: 0.72rem; margin-bottom: 0.5rem; } .shop-card-price { font-size: 1.1rem; margin-bottom: 0.6rem; } .shop-card-button { padding: 0.55rem 1rem; font-size: 0.8rem; } }
 
 /* Merch list */
@@ -1485,8 +1483,6 @@ section#gallery.grid-view.spa-active { overflow-y: auto !important; height: auto
   transition: background 0.2s;
 }
 .gallery-buy-btn:hover { background: #e0303e; }
-.gallery-print-btn { background: transparent; border: 2px solid var(--red); color: var(--red); margin-left: 8px; }
-.gallery-print-btn:hover { background: var(--red); color: #fff; }
 
 /* Mailing list trigger button */
 .email-capture-trigger {
@@ -1865,27 +1861,27 @@ var __paintings = [
   {title:"Untitled XIV",img:"images/untitled-xiii.png",medium:"Digital",price:"",forSale:false},
   {title:"Untitled XV",img:"images/untitled-xiv.png",medium:"Digital",price:"",forSale:false},
   {title:"Untitled XVI",img:"images/untitled-xv.jpg",medium:"Mixed media",price:"",forSale:false},
-  {title:"SynthwaveKat",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/SynthKat_PRINT_HQ.jpg?v=1779745385",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$250",forSale:true,shopUrl:"https://shop.ryryart.com/products/synthwavekat",printUrl:"https://shop.ryryart.com/products/synthwavekat-print"},
-  {title:"Chaos Inc",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/ChaosInc_PRINT_v2.jpg?v=1779747304",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$325",forSale:true,shopUrl:"https://shop.ryryart.com/products/chaos-inc",printUrl:"https://shop.ryryart.com/products/chaos-inc-print"},
-  {title:"King",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/King_PRINT_v2.jpg?v=1779747320",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$225",forSale:true,shopUrl:"https://shop.ryryart.com/products/king",printUrl:"https://shop.ryryart.com/products/king-print"},
-  {title:"Queen",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/Queen_PRINT_v2.jpg?v=1779747330",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$225",forSale:true,shopUrl:"https://shop.ryryart.com/products/queen",printUrl:"https://shop.ryryart.com/products/queen-print"},
-  {title:"Good 2 B King",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/G2Bking_PRINT_v2.jpg?v=1779747340",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$625",forSale:true,shopUrl:"https://shop.ryryart.com/products/good-2-b-king",printUrl:"https://shop.ryryart.com/products/good-2-b-king-print"},
-  {title:"Man",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/Man_PRINT_v2.jpg?v=1779747350",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$275",forSale:true,shopUrl:"https://shop.ryryart.com/products/man",printUrl:"https://shop.ryryart.com/products/man-print"},
-  {title:"Red Twins",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/RT_PRINT.jpg?v=1779741853",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$325",forSale:true,shopUrl:"https://shop.ryryart.com/products/red-twins",printUrl:"https://shop.ryryart.com/products/red-twins-print"},
-  {title:"Time (Original)",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/Time_PRINT.jpg?v=1779741871",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$750",forSale:true,shopUrl:"https://shop.ryryart.com/products/time",printUrl:"https://shop.ryryart.com/products/time-print"},
-  {title:"No Justice",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/NoJustice_PRINT.jpg?v=1779747405",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$475",forSale:true,shopUrl:"https://shop.ryryart.com/products/no-justice",printUrl:"https://shop.ryryart.com/products/no-justice-print"}
+  {title:"SynthwaveKat",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/SynthKat_PRINT_HQ.jpg?v=1779745385",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$250",forSale:true,shopUrl:"https://shop.ryryart.com/products/synthwavekat"},
+  {title:"Chaos Inc",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/ChaosInc_PRINT_v2.jpg?v=1779747304",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$325",forSale:true,shopUrl:"https://shop.ryryart.com/products/chaos-inc"},
+  {title:"King",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/King_PRINT_v2.jpg?v=1779747320",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$225",forSale:true,shopUrl:"https://shop.ryryart.com/products/king"},
+  {title:"Queen",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/Queen_PRINT_v2.jpg?v=1779747330",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$225",forSale:true,shopUrl:"https://shop.ryryart.com/products/queen"},
+  {title:"Good 2 B King",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/G2Bking_PRINT_v2.jpg?v=1779747340",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$625",forSale:true,shopUrl:"https://shop.ryryart.com/products/good-2-b-king"},
+  {title:"Man",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/Man_PRINT_v2.jpg?v=1779747350",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$275",forSale:true,shopUrl:"https://shop.ryryart.com/products/man"},
+  {title:"Red Twins",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/RT_PRINT.jpg?v=1779741853",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$325",forSale:true,shopUrl:"https://shop.ryryart.com/products/red-twins"},
+  {title:"Time (Original)",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/Time_PRINT.jpg?v=1779741871",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$750",forSale:true,shopUrl:"https://shop.ryryart.com/products/time"},
+  {title:"No Justice",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/NoJustice_PRINT.jpg?v=1779747405",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$475",forSale:true,shopUrl:"https://shop.ryryart.com/products/no-justice"}
 ];
 var __shopItems = [
   {title:"Devil Kitty",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/cat-painting_800x800.jpg?v=1775071386",medium:"Acrylic on Canvas",size:"24 x 17\"",price:"$750",url:"https://shop.ryryart.com/products/cat-painting"},
-  {title:"SynthwaveKat",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/SynthKat_PRINT_HQ.jpg?v=1779745385",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"8 x 10\"",price:"$250",url:"https://shop.ryryart.com/products/synthwavekat",printUrl:"https://shop.ryryart.com/products/synthwavekat-print"},
-  {title:"Chaos Inc",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/ChaosInc_PRINT_v2.jpg?v=1779747304",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"12 x 9\"",price:"$325",url:"https://shop.ryryart.com/products/chaos-inc",printUrl:"https://shop.ryryart.com/products/chaos-inc-print"},
-  {title:"King",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/King_PRINT_v2.jpg?v=1779747320",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"8 x 8 x 2\" deep",price:"$225",url:"https://shop.ryryart.com/products/king",printUrl:"https://shop.ryryart.com/products/king-print"},
-  {title:"Queen",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/Queen_PRINT_v2.jpg?v=1779747330",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"8 x 8 x 2\" deep",price:"$225",url:"https://shop.ryryart.com/products/queen",printUrl:"https://shop.ryryart.com/products/queen-print"},
-  {title:"Good 2 B King",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/G2Bking_PRINT_v2.jpg?v=1779747340",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"20 x 15\"",price:"$625",url:"https://shop.ryryart.com/products/good-2-b-king",printUrl:"https://shop.ryryart.com/products/good-2-b-king-print"},
-  {title:"Man",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/Man_PRINT_v2.jpg?v=1779747350",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"12 x 9\"",price:"$275",url:"https://shop.ryryart.com/products/man",printUrl:"https://shop.ryryart.com/products/man-print"},
-  {title:"Red Twins",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/RT_PRINT.jpg?v=1779741853",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"12 x 9\"",price:"$325",url:"https://shop.ryryart.com/products/red-twins",printUrl:"https://shop.ryryart.com/products/red-twins-print"},
-  {title:"Time",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/Time_PRINT.jpg?v=1779741871",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"12 x 36\"",price:"$750",url:"https://shop.ryryart.com/products/time",printUrl:"https://shop.ryryart.com/products/time-print"},
-  {title:"No Justice",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/NoJustice_PRINT.jpg?v=1779747405",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"20 x 10\"",price:"$475",url:"https://shop.ryryart.com/products/no-justice",printUrl:"https://shop.ryryart.com/products/no-justice-print"}
+  {title:"SynthwaveKat",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/SynthKat_PRINT_HQ.jpg?v=1779745385",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"8 x 10\"",price:"$250",url:"https://shop.ryryart.com/products/synthwavekat"},
+  {title:"Chaos Inc",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/ChaosInc_PRINT_v2.jpg?v=1779747304",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"12 x 9\"",price:"$325",url:"https://shop.ryryart.com/products/chaos-inc"},
+  {title:"King",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/King_PRINT_v2.jpg?v=1779747320",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"8 x 8 x 2\" deep",price:"$225",url:"https://shop.ryryart.com/products/king"},
+  {title:"Queen",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/Queen_PRINT_v2.jpg?v=1779747330",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"8 x 8 x 2\" deep",price:"$225",url:"https://shop.ryryart.com/products/queen"},
+  {title:"Good 2 B King",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/G2Bking_PRINT_v2.jpg?v=1779747340",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"20 x 15\"",price:"$625",url:"https://shop.ryryart.com/products/good-2-b-king"},
+  {title:"Man",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/Man_PRINT_v2.jpg?v=1779747350",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"12 x 9\"",price:"$275",url:"https://shop.ryryart.com/products/man"},
+  {title:"Red Twins",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/RT_PRINT.jpg?v=1779741853",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"12 x 9\"",price:"$325",url:"https://shop.ryryart.com/products/red-twins"},
+  {title:"Time",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/Time_PRINT.jpg?v=1779741871",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"12 x 36\"",price:"$750",url:"https://shop.ryryart.com/products/time"},
+  {title:"No Justice",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/NoJustice_PRINT.jpg?v=1779747405",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"20 x 10\"",price:"$475",url:"https://shop.ryryart.com/products/no-justice"}
 ];
 function renderShop() {
   var container = document.getElementById("shopItems");
@@ -2148,20 +2144,9 @@ function selectFilmThumb(el) {
       priceEl.style.display = 'inline';
       buyEl.style.display = 'inline-block';
       if (el.dataset.shopUrl) buyEl.href = el.dataset.shopUrl;
-      var printEl = document.getElementById('galleryPrintBtn');
-      if (printEl) {
-        if (el.dataset.printUrl) {
-          printEl.href = el.dataset.printUrl;
-          printEl.style.display = 'inline-block';
-        } else {
-          printEl.style.display = 'none';
-        }
-      }
     } else {
       priceEl.style.display = 'none';
       buyEl.style.display = 'none';
-      var printEl = document.getElementById('galleryPrintBtn');
-      if (printEl) printEl.style.display = 'none';
     }
   }
 }
@@ -2206,7 +2191,6 @@ function initFilmstrip() {
     thumb.dataset.price = p.price || '';
     thumb.dataset.forSale = p.forSale ? 'true' : '';
     thumb.dataset.shopUrl = p.shopUrl || '';
-    thumb.dataset.printUrl = p.printUrl || '';
     thumb.onclick = function() { selectFilmThumb(this); };
     filmstrip.appendChild(thumb);
     if (i === 0) {
@@ -2220,11 +2204,6 @@ function initFilmstrip() {
         priceEl.style.display = 'inline';
         buyEl.style.display = 'inline-block';
         if (p.shopUrl) buyEl.href = p.shopUrl;
-        var printEl0 = document.getElementById('galleryPrintBtn');
-        if (printEl0 && p.printUrl) {
-          printEl0.href = p.printUrl;
-          printEl0.style.display = 'inline-block';
-        }
       }
     }
   });
