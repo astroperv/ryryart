@@ -1574,7 +1574,7 @@ section#gallery.grid-view.spa-active { overflow-y: auto !important; height: auto
   <div class="hero-cta">
     <a href="#gallery" class="btn btn-outline" onclick="showPage('gallery'); return false;">View Gallery</a>
     <button class="btn btn-outline" id="mailingTrigger" onclick="revealMailingForm()">Join the List</button>
-    <a href="#shop" class="btn btn-primary" onclick="showPage('shop'); return false;">Buy Original Paintings</a>
+    <a href="#shop" class="btn btn-primary" onclick="showPage('shop'); return false;">Buy Original Paintings &amp; Prints</a>
   </div>
 
   <div class="email-capture reveal">
@@ -1606,8 +1606,7 @@ section#gallery.grid-view.spa-active { overflow-y: auto !important; height: auto
       <p id="galleryFeaturedMedium"></p>
       <div class="gallery-price-row" style="margin-top:8px;">
         <span id="galleryPrice" class="gallery-price" style="display:none;"></span>
-        <a id="galleryBuyBtn" href="https://shop.ryryart.com/products/cat-painting" target="_blank" class="gallery-buy-btn" style="display:none;">VIEW &amp; BUY</a>
-        <a id="galleryPrintBtn" href="#" target="_blank" class="gallery-buy-btn gallery-print-btn" style="display:none;">BUY PRINT</a>
+        <a id="galleryBuyBtn" href="https://shop.ryryart.com/products/cat-painting" target="_blank" class="gallery-buy-btn" style="display:none;">VIEW MORE &amp; BUY</a>
       </div>
     </div>
     <div class="gallery-actions">
@@ -1629,7 +1628,8 @@ section#gallery.grid-view.spa-active { overflow-y: auto !important; height: auto
 <!-- SHOP -->
       <section class="page-section" id="shop">
         <div class="shop-header">
-          <p class="shop-subtitle">Original paintings -- one of a kind, ships from Atlanta, GA.</p>
+          <h2 class="section-title">Buy Original<br>Paintings &amp; Prints</h2>
+          <p class="shop-subtitle">One-of-a-kind originals + open-edition prints. Ships from Atlanta, GA.</p>
         </div>
         <div id="shopItems" class="shop-grid"></div>
       </section>
@@ -1899,10 +1899,7 @@ function renderShop() {
     html += '<h3 class="shop-card-title">' + item.title + '</h3>';
     html += '<p class="shop-card-medium">' + item.medium + ' \u2022 ' + item.size + '</p>';
     html += '<span class="shop-card-price">' + item.price + '</span>';
-    html += '<a href="' + item.url + '" class="shop-card-button" target="_blank">VIEW & BUY</a>';
-    if (item.printUrl) {
-      html += '<a href="' + item.printUrl + '" class="shop-card-button shop-card-button-print" target="_blank">BUY PRINT</a>';
-    }
+    html += '<a href="' + item.url + '" class="shop-card-button" target="_blank">VIEW MORE &amp; BUY</a>';
     html += '</div></div>';
   }
   container.innerHTML = html;
