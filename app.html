@@ -1209,8 +1209,8 @@ section#gallery.spa-active {
 .shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
 .shop-card { background: #1a1a1a; border-radius: 12px; overflow: hidden; transition: transform 0.2s; border: 1px solid #fff; }
 .shop-card:hover { transform: translateY(-4px); }
-.shop-card-img-wrap { aspect-ratio: 1; overflow: hidden; }
-.shop-card-img { width: 100%; height: 100%; object-fit: cover; }
+.shop-card-img-wrap { aspect-ratio: 1; overflow: hidden; background: #000; }
+.shop-card-img { width: 100%; height: 100%; object-fit: contain; }
 .shop-card-info { padding: 1.2rem; text-align: center; background: #000; }
 .shop-card-title { font-size: 1.2rem; margin: 0 0 0.3rem; color: #fff; }
 .shop-card-medium { font-size: 0.72rem; color: #aaa; margin: 0 0 0.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -1877,7 +1877,7 @@ var __paintings = [
   {title:"No Justice",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/NoJustice_PRINT.jpg?v=1779747405",medium:"Acrylic \u0026 Oil Pastel on Canvas",price:"$475",forSale:true,shopUrl:"https://shop.ryryart.com/products/no-justice"}
 ];
 var __shopItems = [
-  {title:"Devil Kitty",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/cat-painting_800x800.jpg?v=1775071386",medium:"Acrylic on Canvas",size:"24 x 17\"",price:"$750",url:"https://shop.ryryart.com/products/cat-painting"},
+  {title:"Devil Kitty",img:"images/teal-cat.jpg",medium:"Acrylic on Canvas",size:"24 x 17\"",price:"$750",url:"https://shop.ryryart.com/products/cat-painting"},
   {title:"SynthwaveKat",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/SynthKat_PRINT_HQ.jpg?v=1779745385",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"8 x 10\"",price:"$250",url:"https://shop.ryryart.com/products/synthwavekat"},
   {title:"Chaos Inc",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/ChaosInc_PRINT_v2.jpg?v=1779747304",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"12 x 9\"",price:"$325",url:"https://shop.ryryart.com/products/chaos-inc"},
   {title:"King",img:"https://cdn.shopify.com/s/files/1/0721/7574/7142/files/King_PRINT_v2.jpg?v=1779747320",medium:"Acrylic \u0026 Oil Pastel on Canvas",size:"8 x 8 x 2\" deep",price:"$225",url:"https://shop.ryryart.com/products/king"},
